@@ -4,7 +4,7 @@ import pickle
 st.title("Movie Recommender System")
 
 df = pd.read_csv("cleaned_data.csv")          # Recommendation ke liye
-movies_df = pd.read_csv("tmdb_5000_movies.csv")   # Rating ke liye
+   # Rating ke liye
 
 with open("similarity.pkl", "rb") as file:
     similarities = pickle.load(file)
@@ -49,9 +49,6 @@ def get_index_from_name(name):
 if st.button("Recommend"):
 
     index = get_index_from_name(name)
-    rating = movies_df[movies_df['title'] == name]['vote_average'].values[0]
-
-    st.write("⭐ Rating:", rating)
     if index == -1:
         st.write("Movie not found. Please check the spelling and try again.")
     else:
